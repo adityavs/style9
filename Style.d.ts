@@ -53,7 +53,15 @@
  * THE SOFTWARE.
  */
 
-export default interface Style extends ViewStyle, TextStyle {}
+type Style = AllStyle & {
+  // XXX Mixed keys not possible in TypeScript
+  // https://github.com/microsoft/TypeScript/issues/17867
+  // [key: string]: AllStyle;
+};
+
+export default Style;
+
+interface AllStyle extends ViewStyle, TextStyle {}
 
 type BorderStyle = 'solid' | 'dotted' | 'dashed';
 
